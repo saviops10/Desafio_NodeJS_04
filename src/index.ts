@@ -1,43 +1,70 @@
-/**
- * Required External Modules
- */
+/*REQUERIMENTOS:
+R01 – Representar o Aluno com classe Aluno
+(Nome, Idade, Nota);
+R02 – Utilizar lista de Alunos com array de Aluno
+let alunos:Array<Aluno> = [];
 
-import * as dotenv from "dotenv";
-import express from "express";
-import cors from "cors";
-import helmet from "helmet";
+Recebe os dados no readline dentro do loop, cria um new Aluno, coloca esses dados dentro dele e ja faz o push pro array
+*/
 
-dotenv.config();
+import { strictEqual } from "assert";
+import { NOMEM } from "dns";
 
-/**
- * App Variables
- */
-
-if (!process.env.PORT) {
-	process.exit(1);
+console.log('Desafio 04 NodeJS ')
+class aluno {
+  [x: string]: any;
+	constructor (nome: string, idade: number, nota: number){
+  this._nome = nome;
+  this._idade = idade;
+  this._nota = nota;
+}
 }
 
-const PORT: number = parseInt(process.env.PORT as string, 10);
+var readlineSync = require('readline-sync');
 
-const app = express();
-
-/**
- *  App Configuration
- */
-
-app.use(helmet());
-app.use(cors());
-app.use(express.json());
-
-/**
- * Server Activation
- */
-
-app.listen(PORT, () => {
-	console.log(`Listening on port ${PORT}`);
+var cadastro = readlineSync.question('Quantos alunos deseja cadastrar?');
+var arrayAlunos = [cadastro];
 
 
-	// CÓDIGO PARA ATENDER OS REQUERIMENTOS
-	// R01, R02, R03, R04, R05
-	
-});
+console.log('\n');
+
+console.log('Sua lista contem ' +`${arrayAlunos}`+ ' alunos');
+console.log("\n");
+
+var idade = [];
+var notas = [];
+var nome = [];
+console.log(' Vamos iniciar o cadastramento: '+"\n");
+
+for (var i = 0; i < cadastro; i++)
+            {
+                console.log("Escreva os nome do aluno: " +i);
+                nome [i] = readlineSync.question();
+                arrayAlunos.push(nome[i]);
+                console.log(nome[i] + " Foi cadastrado!");
+                console.log("\n"); 
+
+                console.log("Por favor, informe a idade deste aluno: "+ nome[i]);
+                idade [i] = parseInt(readlineSync.question());
+                arrayAlunos.push(idade[i]);
+                console.log(" A idade " + idade[i] + " foi atribuida ao aluno " + nome[i]);
+                console.log("\n");
+
+                console.log("Por favor, informe a nota deste aluno: "+ nome[i]);
+                notas [i] = parseInt(readlineSync.question());
+                arrayAlunos.push(notas[i]);
+                console.log(" A nota " + notas[i] + " foi atribuida ao aluno " + nome[i]);
+                console.log("\n");
+
+            }
+            console.log(arrayAlunos);
+            console.log("\n");
+   
+           
+         
+
+            
+
+
+        
+  
